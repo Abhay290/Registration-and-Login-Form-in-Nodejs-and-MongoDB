@@ -8,7 +8,8 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
-mongoose.connect('mongodb+srv://<DB_USER_NAME>:<DB_PASSWORD>@cluster0-vatbg.mongodb.net/registrationFormHeruko?retryWrites=true&w=majority', {
+
+mongoose.connect('mongodb+srv://Abhay1234:abhay123456789@cluster0.auygk8z.mongodb.net/Students?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }, (err) => {
@@ -17,7 +18,7 @@ mongoose.connect('mongodb+srv://<DB_USER_NAME>:<DB_PASSWORD>@cluster0-vatbg.mong
   } else {
     console.log('Error in DB connection : ' + err);
   }
-});
+}); 
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -34,7 +35,7 @@ app.use(session({
 }));
 
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');	
+app.set('view engine', 'ejs');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -61,5 +62,6 @@ app.use(function (err, req, res, next) {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
-  console.log('Server is started on http://127.0.0.1:'+PORT);
+  console.log('Server is started on http://127.0.0.1:' + PORT);
 });
+
